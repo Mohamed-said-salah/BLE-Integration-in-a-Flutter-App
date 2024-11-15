@@ -10,7 +10,7 @@ class BackToFindDevicesScreenButton extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+        padding: const EdgeInsets.all(15),
         child: InkWell(
           onTap: () {
             Navigator.pop(context);
