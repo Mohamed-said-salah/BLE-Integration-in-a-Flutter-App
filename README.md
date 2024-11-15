@@ -24,6 +24,9 @@ The app is designed to scan, connect, and communicate with nearby BLE devices. I
  * VS code
  * Android Studio
 
+## BLE Device used for testing
+This application was tested with the Mi Band 4, ensuring compatibility and functionality for BLE communication.
+
 ## Get the App 📱
  * Get the apk of the app from [**Drive**](https://drive.google.com/file/d/1mUKyTPygvfdWe33nLk1Q_TXUvot1iPRU/view?usp=sharing)
 
@@ -35,8 +38,13 @@ Prerequisites
  * Flutter SDK: Ensure Flutter is installed on your system. Flutter installation guide
  * Android Studio or Visual Studio Code for development and testing.
  * clone the repository
- * enable bluetooth and location
+ * Ensure your device's Bluetooth and Location are enabled.
  * and run the app on any plugged ios or android physical device.
+   
+Notes
+
+ * The app displays available BLE devices within range; select the Mi Band 4 or your BLE       
+   device for testing.
 
 ## Installation
    ``` bash 
@@ -98,4 +106,3 @@ Prerequisites
   <img height="460px" src="https://github.com/user-attachments/assets/7d76812b-5e96-454f-bb03-fd96b18ed184">
 <hr/>
 </div>
-
