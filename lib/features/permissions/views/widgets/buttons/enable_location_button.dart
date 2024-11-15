@@ -4,21 +4,25 @@ import 'package:geolocator/geolocator.dart';
 
 import '../../../../../constants/fonts/font_families_names.dart';
 
+/// This widget is a button that prompts the user to enable location permissions.
+/// It opens the location settings if the user grants the permissions.
 class EnableLocationButton extends StatelessWidget {
   const EnableLocationButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    /// The material widget that is used to create a button shape.
     return Material(
       color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
         child: InkWell(
           onTap: () async {
-            final locatoinPermissionStatus =
+            /// Request location permission and open the location settings if the user grants the permission.
+            final locationPermissionStatus =
                 await PermissionsServices.requestLocation();
 
-            if (locatoinPermissionStatus == PermissionStatus.granted) {
+            if (locationPermissionStatus == PermissionStatus.granted) {
               Geolocator.openLocationSettings();
             }
           },

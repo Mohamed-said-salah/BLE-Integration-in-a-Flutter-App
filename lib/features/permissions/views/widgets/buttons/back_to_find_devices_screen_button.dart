@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../constants/fonts/font_families_names.dart';
 
+/// A button that navigates back to the previous screen where users can find nearby devices.
 class BackToFindDevicesScreenButton extends StatelessWidget {
   const BackToFindDevicesScreenButton({super.key});
 
@@ -13,6 +13,7 @@ class BackToFindDevicesScreenButton extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: InkWell(
           onTap: () {
+            // Navigate back to the previous screen
             Navigator.pop(context);
           },
           borderRadius: BorderRadius.circular(12),
@@ -37,9 +38,7 @@ class BackToFindDevicesScreenButton extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
+                  SizedBox(width: 8),
                   Icon(
                     Icons.bluetooth_searching_sharp,
                     color: Colors.white,

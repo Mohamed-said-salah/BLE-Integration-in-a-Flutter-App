@@ -2,19 +2,24 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
+/// This page is used to exchange data with a connected device
+/// It discovers the services provided by the device and sets up
+/// the characteristics to send and receive data
+
 class ExchangeDataWithConnectedDeviceScreen extends StatefulWidget {
   final BluetoothDevice device;
 
   const ExchangeDataWithConnectedDeviceScreen({
-    Key? key,
+    super.key,
     required this.device,
-  }) : super(key: key);
+  });
 
   @override
   State<ExchangeDataWithConnectedDeviceScreen> createState() =>
       _ExchangeDataWithConnectedDeviceScreenState();
 }
 
+/// State for [ExchangeDataWithConnectedDeviceScreen]
 class _ExchangeDataWithConnectedDeviceScreenState
     extends State<ExchangeDataWithConnectedDeviceScreen> {
   BluetoothCharacteristic? targetWriteCharacteristic;

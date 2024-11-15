@@ -1,7 +1,6 @@
 import 'package:ble_integration_in_flutter_app/features/permissions/views/widgets/buttons/enable_location_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:lottie/lottie.dart';
 
 import '../../../../constants/fonts/font_families_names.dart';
@@ -9,6 +8,7 @@ import '../../../../constants/animations/animation_assets_paths.dart';
 import '../../view_models/location/location_status_cubit.dart';
 import '../widgets/buttons/back_to_find_devices_screen_button.dart';
 
+// Screen for handling location permissions
 class EnableLocationScreen extends StatefulWidget {
   static const String routeName = '/enable_location_screen';
 
@@ -25,10 +25,10 @@ class _EnableLocationScreenState extends State<EnableLocationScreen> {
       backgroundColor: Colors.white,
       body: BlocBuilder<LocationStatusCubit, LocationStatusState>(
         builder: (context, state) {
+          // Check the current location status state
           if (state is LocationEnabled) {
             return const LocationEnabledView();
           }
-
           return const EnableLocationView();
         },
       ),
@@ -36,6 +36,7 @@ class _EnableLocationScreenState extends State<EnableLocationScreen> {
   }
 }
 
+// View displayed when location is not enabled
 class EnableLocationView extends StatelessWidget {
   const EnableLocationView({super.key});
 
@@ -60,7 +61,7 @@ class EnableLocationView extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         const Text(
-          'We need to enable Location and allow all of it\'s permissions to ensure this app works properly',
+          'We need to enable Location and allow all of its permissions to ensure this app works properly',
           style: TextStyle(
             fontSize: 16,
             fontFamily: FontFamiliesNames.hostGroteskRegular,
@@ -75,6 +76,7 @@ class EnableLocationView extends StatelessWidget {
   }
 }
 
+// View displayed when location is enabled
 class LocationEnabledView extends StatelessWidget {
   const LocationEnabledView({super.key});
 

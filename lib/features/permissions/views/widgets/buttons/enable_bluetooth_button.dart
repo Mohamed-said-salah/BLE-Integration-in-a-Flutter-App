@@ -3,6 +3,7 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 import '../../../../../constants/fonts/font_families_names.dart';
 
+/// A button widget that enables Bluetooth when tapped.
 class EnableBluetoothButton extends StatelessWidget {
   const EnableBluetoothButton({super.key});
 
@@ -14,6 +15,7 @@ class EnableBluetoothButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
         child: InkWell(
           onTap: () {
+            // Attempt to turn on Bluetooth with a 30-second timeout
             FlutterBluePlus.turnOn(timeout: 30);
           },
           borderRadius: BorderRadius.circular(12),
@@ -45,9 +47,7 @@ class EnableBluetoothButton extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
+                  SizedBox(width: 8),
                   Icon(
                     Icons.bluetooth_connected_rounded,
                     color: Colors.white,

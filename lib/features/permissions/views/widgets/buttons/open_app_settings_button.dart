@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../../../../constants/fonts/font_families_names.dart';
@@ -12,7 +11,8 @@ class OpenAppSettingsButton extends StatefulWidget {
 }
 
 class _OpenAppSettingsButtonState extends State<OpenAppSettingsButton> {
-  bool _isOpenning = false;
+  // Tracks if the settings are currently being opened
+  bool _isOpening = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,13 @@ class _OpenAppSettingsButtonState extends State<OpenAppSettingsButton> {
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
         child: InkWell(
           onTap: () async {
-            if (!_isOpenning) {
+            if (!_isOpening) {
               setState(() {
-                _isOpenning = true;
+                _isOpening = true;
               });
+              // Open the app settings
               await openAppSettings();
+              // Return to the previous screen
               Navigator.pop(context);
             }
           },
@@ -59,9 +61,7 @@ class _OpenAppSettingsButtonState extends State<OpenAppSettingsButton> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
+                  SizedBox(width: 8),
                   Icon(
                     Icons.settings,
                     color: Colors.white,

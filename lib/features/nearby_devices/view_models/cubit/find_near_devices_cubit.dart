@@ -17,6 +17,17 @@ class FindNearDevicesCubit extends Cubit<FindNearDevicesState> {
 
   final List<BluetoothDevice> _devices = [];
 
+  /// Start scanning for nearby devices.
+  ///
+  /// If the state is not currently scanning, this function will start scanning
+  /// and emit the [BlueToothScanning] state with an empty list of devices.
+  ///
+  /// When the scanning is finished, either because the timeout has expired or
+  /// because the user has stopped the scan, this function will emit the
+  /// [BlueToothScanStopped] state with the list of devices that were found.
+  ///
+  /// If the bluetooth is not enabled, this function will emit the
+  /// [BlueToothScanStopped] state with an empty list of devices.
   void startScan() async {
     if (state is! BlueToothScanning) {
       emit(BlueToothScanning(_devices));
@@ -60,6 +71,12 @@ class FindNearDevicesCubit extends Cubit<FindNearDevicesState> {
     }
   }
 
+  /// Stop the current scan and emit the [BlueToothScanStopped] state with the
+  /// current list of devices.
+  ///
+  /// This is a convenience function to allow the UI to easily stop the scan.
+  ///
+  ///
   void stopScan() async {
     await FlutterBluePlus.stopScan();
 
