@@ -34,7 +34,9 @@ Prerequisites
 
  * Flutter SDK: Ensure Flutter is installed on your system. Flutter installation guide
  * Android Studio or Visual Studio Code for development and testing.
- * clone the repository and run the app on any plugged ios or android Emulator or physical device.
+ * clone the repository
+ * enable bluetooth and location
+ * and run the app on any plugged ios or android physical device.
 
 ## Installation
    ``` bash 
