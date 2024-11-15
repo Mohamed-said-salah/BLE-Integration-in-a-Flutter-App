@@ -56,6 +56,38 @@ Prerequisites
       flutter build apk --release
    ```
 
+## Project Structure
+   ``` bash
+      .
+      └── lib/
+          ├── services/
+          │   └── permissions.services.dart
+          ├── features/
+          │   ├── services_and_permissions/
+          │   │   ├── data/
+          │   │   │   ├── repos
+          │   │   │   └── models
+          │   │   ├── views/
+          │   │   │   ├── screens/
+          │   │   │   │   ├── enable_bluetooth_screen.dart
+          │   │   │   │   ├── enable_location_screen.dart
+          │   │   │   │   ├── request_bluetooth_permissions_screen.dart
+          │   │   │   │   └── request_location_permissions_screen.dart
+          │   │   │   └── widgets/
+          │   │   │       └── buttons/...
+          │   │   └── view_models/
+          │   │       ├── bluetooth/
+          │   │       │   ├── bluetooth_status_cubit.dart
+          │   │       │   └── bluetooth_status_state.dart
+          │   │       └── location/
+          │   │           ├── location_status_cubit.dart
+          │   │           └── location_status_state.dart
+          │   ├── scan_near_by_devices/...
+          │   └── data_exchange/...
+          ├── constants/...
+          └── main.dart
+   ```
+
 ## ScreenShots 🖼️
 <div align='center'>
   <img height="460px" src="https://github.com/Mohamed-said-salah/quote-generator-mobile-app/blob/main/quote_generator_screen_shots/Home%20screen-portrait.png?raw=true">
@@ -65,25 +97,4 @@ Prerequisites
 </div>
 
 
-## What was asked?
-Hello there, your task is to convert the following figma design into a mobile app:
 
-https://www.figma.com/file/RU5SIqb4oqRpowA56hUB9O/quote-generator-screens?type=design&node-id=0%3A1&mode=design&t=x9pgdqsV75TKlwRp-1
-
-Then use the following api to get random quotes in home screen and get quotes by id in favorite quotes screen:
-
-https://github.com/lukePeavey/quotable
-
-So make sure that you have covered all the following tasks:
-
--   design home and favorite quotes screens.
--   implement navigation between screens.
--   implement generate quote, add to favorite, remove from favorite and search functionalities.
--   store IDs of favorite quotes locally on user device.
-
-That's all, fork the repository and start working on it.
-
-Best of luck.
-
-## Task Done ✅
-I done the intern2grow task, check the result [**ApkFile**](https://drive.google.com/file/d/1RlOTENpvQD1q3EzaTattEokzMvNtfUQa/view?usp=sharing) on GoogleDrive.
