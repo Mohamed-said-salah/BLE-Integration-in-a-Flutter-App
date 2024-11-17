@@ -39,11 +39,11 @@ Prerequisites
  * Android Studio or Visual Studio Code for development and testing.
  * clone the repository
  * Ensure your device's Bluetooth and Location are enabled.
- * and run the app on any plugged ios or android physical device.
+ * and run the app on any plugged android physical device.
    
 Notes
 
- * The app displays available BLE devices within range; select the Mi Band 4 or your BLE       
+ * The app displays available BLE devices within range; select your BLE       
    device for testing.
 
 ## Installation
@@ -57,7 +57,7 @@ Notes
       flutter pub get
    ```
    ``` bash
-      # Run the application on an Android device or emulator
+      # Run the application on an physical Android device 
       flutter run
    ```
 
