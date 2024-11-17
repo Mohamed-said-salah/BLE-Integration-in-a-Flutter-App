@@ -90,6 +90,51 @@ class _ExchangeDataWithConnectedDeviceScreenState
     print("Received response: $response");
   }
 
+  /// Read the data from a given characteristic and show it in a dialog
+  Future<void> _readCharacteristic(
+      BluetoothCharacteristic characteristic) async {
+    try {
+      List<int> value = await characteristic.read();
+      String decodedValue = utf8.decode(value);
+
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Characteristic Data'),
+            content: Text('Read Value: $decodedValue'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: Text('Failed to read characteristic: $e'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   /// Send JSON command to the writable characteristic
   Future<void> _sendJsonCommand(Map<String, dynamic> command) async {
     if (targetWriteCharacteristic == null) {
@@ -123,6 +168,15 @@ class _ExchangeDataWithConnectedDeviceScreenState
         statusMessage = "Error sending command: $e";
       });
     }
+  }
+
+  /// Get the string representation of the characteristic properties
+  String _getProperties(BluetoothCharacteristic characteristic) {
+    final props = <String>[];
+    if (characteristic.properties.read) props.add('Read');
+    if (characteristic.properties.write) props.add('Write');
+    if (characteristic.properties.notify) props.add('Notify');
+    return props.join(', ');
   }
 
   @override
@@ -172,6 +226,11 @@ class _ExchangeDataWithConnectedDeviceScreenState
                         subtitle: Text(
                           'Properties: ${_getProperties(characteristic)}',
                         ),
+                        onTap: () {
+                          if (characteristic.properties.read) {
+                            _readCharacteristic(characteristic);
+                          }
+                        },
                       );
                     }).toList(),
                   );
@@ -182,14 +241,5 @@ class _ExchangeDataWithConnectedDeviceScreenState
         ),
       ),
     );
-  }
-
-  /// Get the string representation of the characteristic properties
-  String _getProperties(BluetoothCharacteristic characteristic) {
-    final props = <String>[];
-    if (characteristic.properties.read) props.add('Read');
-    if (characteristic.properties.write) props.add('Write');
-    if (characteristic.properties.notify) props.add('Notify');
-    return props.join(', ');
   }
 }
