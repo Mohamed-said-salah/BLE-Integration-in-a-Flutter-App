@@ -35,7 +35,7 @@ To get a local copy up and running, follow these instructions.
 
 Prerequisites
 
- * Flutter SDK: Ensure Flutter is installed on your system. Flutter installation guide
+ * Flutter SDK: Ensure Flutter is installed on your system. Follow Flutter installation guide
  * Android Studio or Visual Studio Code for development and testing.
  * clone the repository
  * Ensure your device's Bluetooth and Location are enabled.
