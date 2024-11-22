@@ -23,7 +23,6 @@ class ExchangeDataWithConnectedDeviceScreen extends StatefulWidget {
 class _ExchangeDataWithConnectedDeviceScreenState
     extends State<ExchangeDataWithConnectedDeviceScreen> {
   BluetoothCharacteristic? targetWriteCharacteristic;
-  BluetoothCharacteristic? targetNotifyCharacteristic;
   String statusMessage = "Waiting to connect...";
   String responseMessage = "No response received yet.";
   List<BluetoothService> availableServices = []; // List of discovered services
@@ -36,9 +35,12 @@ class _ExchangeDataWithConnectedDeviceScreenState
 
   /// Discover services and locate the writable and notifiable characteristics
   Future<void> _discoverServicesAndSetupCharacteristics() async {
-    setState(() {
-      statusMessage = "Discovering services...";
-    });
+    setState(
+      () { 
+        statusMessage = "Discovering services...";
+      }
+    
+    );
 
     try {
       List<BluetoothService> services = await widget.device.discoverServices();
@@ -52,15 +54,6 @@ class _ExchangeDataWithConnectedDeviceScreenState
           if (characteristic.properties.write) {
             targetWriteCharacteristic = characteristic;
             print("Writable characteristic found: ${characteristic.uuid}");
-          }
-          // Identify notifiable characteristic
-          if (characteristic.properties.notify) {
-            targetNotifyCharacteristic = characteristic;
-            await characteristic.setNotifyValue(true);
-            characteristic.value.listen((value) {
-              _handleResponse(value);
-            });
-            print("Notifiable characteristic found: ${characteristic.uuid}");
           }
         }
       }
