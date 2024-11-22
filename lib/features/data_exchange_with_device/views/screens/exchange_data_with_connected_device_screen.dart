@@ -243,3 +243,8 @@ class _ExchangeDataWithConnectedDeviceScreenState
     );
   }
 }
+
+
+
+
+/// Last Commit was about adding dialog that appears with showing details from read characteristic of any service like 180
